@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33927.289
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lojaABC", "lojaABC\lojaABC.csproj", "{402AD430-D1D4-4980-9C91-683C50729AEA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{402AD430-D1D4-4980-9C91-683C50729AEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{402AD430-D1D4-4980-9C91-683C50729AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{402AD430-D1D4-4980-9C91-683C50729AEA}.Debug|x64.ActiveCfg = Debug|x64
+		{402AD430-D1D4-4980-9C91-683C50729AEA}.Debug|x64.Build.0 = Debug|x64
+		{402AD430-D1D4-4980-9C91-683C50729AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{402AD430-D1D4-4980-9C91-683C50729AEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{402AD430-D1D4-4980-9C91-683C50729AEA}.Release|x64.ActiveCfg = Release|x64
+		{402AD430-D1D4-4980-9C91-683C50729AEA}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {42A66B13-9CE4-42E5-9A1C-31594CB3CFBF}
+	EndGlobalSection
+EndGlobal

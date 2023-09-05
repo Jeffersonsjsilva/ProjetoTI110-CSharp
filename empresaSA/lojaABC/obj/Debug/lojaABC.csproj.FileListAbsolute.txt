@@ -1,0 +1,9 @@
+C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\lojaABC\bin\Debug\lojaABC.exe.config
+C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\lojaABC\bin\Debug\lojaABC.exe
+C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\lojaABC\bin\Debug\lojaABC.pdb
+C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\lojaABC\obj\Debug\lojaABC.Properties.Resources.resources
+C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\lojaABC\obj\Debug\lojaABC.csproj.GenerateResource.cache
+C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\lojaABC\obj\Debug\lojaABC.csproj.CoreCompileInputs.cache
+C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\lojaABC\obj\Debug\lojaABC.exe
+C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\lojaABC\obj\Debug\lojaABC.pdb
+C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\lojaABC\obj\Debug\lojaABC.frmSplash.resources
