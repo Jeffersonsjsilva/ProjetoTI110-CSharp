@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Biblioteca do csharp
+/*
+ * comentario de bloco
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,9 +33,15 @@ namespace lojaABC
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            frmMenuPrincipal abrir = new frmMenuPrincipal();
-            abrir.Show();
-            this.Hide();
+            //frmMenuPrincipal abrir = new frmMenuPrincipal();
+            //abrir.Show();
+            //this.Hide();
+            //declaração de variaveis
+            string usuario, senha;
+
+            //inicializar variaveis
+            usuario = txtUsuario.Text;
+            senha = txtSenha.Text;
         }
     }
 }

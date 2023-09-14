@@ -7,3 +7,6 @@ C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\l
 C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\lojaABC\obj\Debug\lojaABC.exe
 C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\lojaABC\obj\Debug\lojaABC.pdb
 C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\lojaABC\obj\Debug\lojaABC.frmSplash.resources
+C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\lojaABC\obj\Debug\lojaABC.frmLogin.resources
+C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\lojaABC\obj\Debug\lojaABC.frmMenuPrincipal.resources
+C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\lojaABC\obj\Debug\lojaABC.csproj.AssemblyReference.cache
