@@ -47,6 +47,10 @@ namespace lojaABC
             }
             if (rbtDivisao.Checked)
             {
+                if (num2 == 0)
+                {
+                    MessageBox.Show("Impossivel dividir por zero", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
                 resultado = num1 / num2;
             }
             if (rbtMultiplicacao.Checked)
