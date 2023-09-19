@@ -37,10 +37,10 @@ namespace lojaABC
             this.txtVar1 = new System.Windows.Forms.TextBox();
             this.txtVar2 = new System.Windows.Forms.TextBox();
             this.gbxOperador = new System.Windows.Forms.GroupBox();
-            this.rbtAdicao = new System.Windows.Forms.RadioButton();
-            this.rbtSubtracao = new System.Windows.Forms.RadioButton();
-            this.rbtMultiplicacao = new System.Windows.Forms.RadioButton();
             this.rbtDivisao = new System.Windows.Forms.RadioButton();
+            this.rbtMultiplicacao = new System.Windows.Forms.RadioButton();
+            this.rbtSubtracao = new System.Windows.Forms.RadioButton();
+            this.rbtAdicao = new System.Windows.Forms.RadioButton();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
@@ -114,39 +114,6 @@ namespace lojaABC
             this.gbxOperador.TabStop = false;
             this.gbxOperador.Text = "Operador";
             // 
-            // rbtAdicao
-            // 
-            this.rbtAdicao.AutoSize = true;
-            this.rbtAdicao.Location = new System.Drawing.Point(7, 41);
-            this.rbtAdicao.Name = "rbtAdicao";
-            this.rbtAdicao.Size = new System.Drawing.Size(99, 24);
-            this.rbtAdicao.TabIndex = 3;
-            this.rbtAdicao.TabStop = true;
-            this.rbtAdicao.Text = "Adição (+)";
-            this.rbtAdicao.UseVisualStyleBackColor = true;
-            // 
-            // rbtSubtracao
-            // 
-            this.rbtSubtracao.AutoSize = true;
-            this.rbtSubtracao.Location = new System.Drawing.Point(7, 65);
-            this.rbtSubtracao.Name = "rbtSubtracao";
-            this.rbtSubtracao.Size = new System.Drawing.Size(120, 24);
-            this.rbtSubtracao.TabIndex = 4;
-            this.rbtSubtracao.TabStop = true;
-            this.rbtSubtracao.Text = "Subtração (-)";
-            this.rbtSubtracao.UseVisualStyleBackColor = true;
-            // 
-            // rbtMultiplicacao
-            // 
-            this.rbtMultiplicacao.AutoSize = true;
-            this.rbtMultiplicacao.Location = new System.Drawing.Point(6, 89);
-            this.rbtMultiplicacao.Name = "rbtMultiplicacao";
-            this.rbtMultiplicacao.Size = new System.Drawing.Size(138, 24);
-            this.rbtMultiplicacao.TabIndex = 5;
-            this.rbtMultiplicacao.TabStop = true;
-            this.rbtMultiplicacao.Text = "Multiplicação (*)";
-            this.rbtMultiplicacao.UseVisualStyleBackColor = true;
-            // 
             // rbtDivisao
             // 
             this.rbtDivisao.AutoSize = true;
@@ -159,6 +126,39 @@ namespace lojaABC
             this.rbtDivisao.UseVisualStyleBackColor = true;
             this.rbtDivisao.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
+            // rbtMultiplicacao
+            // 
+            this.rbtMultiplicacao.AutoSize = true;
+            this.rbtMultiplicacao.Location = new System.Drawing.Point(6, 89);
+            this.rbtMultiplicacao.Name = "rbtMultiplicacao";
+            this.rbtMultiplicacao.Size = new System.Drawing.Size(138, 24);
+            this.rbtMultiplicacao.TabIndex = 5;
+            this.rbtMultiplicacao.TabStop = true;
+            this.rbtMultiplicacao.Text = "Multiplicação (*)";
+            this.rbtMultiplicacao.UseVisualStyleBackColor = true;
+            // 
+            // rbtSubtracao
+            // 
+            this.rbtSubtracao.AutoSize = true;
+            this.rbtSubtracao.Location = new System.Drawing.Point(7, 65);
+            this.rbtSubtracao.Name = "rbtSubtracao";
+            this.rbtSubtracao.Size = new System.Drawing.Size(120, 24);
+            this.rbtSubtracao.TabIndex = 4;
+            this.rbtSubtracao.TabStop = true;
+            this.rbtSubtracao.Text = "Subtração (-)";
+            this.rbtSubtracao.UseVisualStyleBackColor = true;
+            // 
+            // rbtAdicao
+            // 
+            this.rbtAdicao.AutoSize = true;
+            this.rbtAdicao.Location = new System.Drawing.Point(7, 41);
+            this.rbtAdicao.Name = "rbtAdicao";
+            this.rbtAdicao.Size = new System.Drawing.Size(99, 24);
+            this.rbtAdicao.TabIndex = 3;
+            this.rbtAdicao.TabStop = true;
+            this.rbtAdicao.Text = "Adição (+)";
+            this.rbtAdicao.UseVisualStyleBackColor = true;
+            // 
             // btnCalcular
             // 
             this.btnCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -166,7 +166,7 @@ namespace lojaABC
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(104, 31);
             this.btnCalcular.TabIndex = 7;
-            this.btnCalcular.Text = "Calcular";
+            this.btnCalcular.Text = "&Calcular";
             this.btnCalcular.UseVisualStyleBackColor = true;
             this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
@@ -177,8 +177,9 @@ namespace lojaABC
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(104, 29);
             this.btnLimpar.TabIndex = 8;
-            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.Text = "&Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnSair
             // 
@@ -187,7 +188,7 @@ namespace lojaABC
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(104, 29);
             this.btnSair.TabIndex = 9;
-            this.btnSair.Text = "Sair";
+            this.btnSair.Text = "&Sair";
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 

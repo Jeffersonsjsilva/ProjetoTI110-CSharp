@@ -37,6 +37,11 @@ namespace lojaABC
 
             num1 = Convert.ToDouble(txtVar1.Text);
             num2 = Convert.ToDouble(txtVar2.Text);
+
+            if (rbtAdicao.Checked || rbtSubtracao.Checked || rbtMultiplicacao.Checked ||rbtDivisao.Checked)
+            {
+
+            
             if (rbtAdicao.Checked)
             {
                 resultado = num1 + num2;
@@ -59,6 +64,45 @@ namespace lojaABC
             }
 
             lblCalculo.Text = resultado.ToString();
+            limparCamposCalcular();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione uma operação", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        //criando método para limpar conteúdo
+        public void limparCamposCalcular()
+        {
+            txtVar1.Text = ""; //limpa caixa de texto
+            txtVar2.Clear(); //limpa caixa de texto
+            //limpando RadioButton
+            rbtAdicao.Checked = false;
+            rbtSubtracao.Checked = false;
+            rbtMultiplicacao.Checked = false;
+            rbtDivisao.Checked = false;
+
+            txtVar1.Focus(); //Retornar o tabindex para ele
+        }
+        public void limparCampos()
+        {
+            txtVar1.Text = ""; //limpa caixa de texto
+            txtVar2.Clear(); //limpa caixa de texto
+            lblCalculo.Text = ""; //limpar label
+            //limpando RadioButton
+            rbtAdicao.Checked = false;
+            rbtSubtracao.Checked = false;
+            rbtMultiplicacao.Checked = false;
+            rbtDivisao.Checked = false;
+
+            txtVar1.Focus(); //Retornar o tabindex para ele
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            //executar o metodo/função limparCampos
+            limparCampos();
         }
     }
 }
