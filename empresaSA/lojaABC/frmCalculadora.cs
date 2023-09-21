@@ -28,47 +28,67 @@ namespace lojaABC
 
             //Declarando variavel para receber o valor do butão
             DialogResult resp = MessageBox.Show("Deseja sair?", "Mensagem do sistema", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
-            Application.Exit();
+
+            if(resp == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            if (resp == DialogResult.No)
+            {
+                Application.Exit();
+            }
+            if (resp == DialogResult.Cancel)
+            {
+                Application.Exit();
+            }
         }
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
             double num1, num2, resultado = 0.0;
 
-            num1 = Convert.ToDouble(txtVar1.Text);
-            num2 = Convert.ToDouble(txtVar2.Text);
+            try
+            {
+                num1 = Convert.ToDouble(txtVar1.Text);
+                num2 = Convert.ToDouble(txtVar2.Text);
 
-            if (rbtAdicao.Checked || rbtSubtracao.Checked || rbtMultiplicacao.Checked ||rbtDivisao.Checked)
-            {
-
-            
-            if (rbtAdicao.Checked)
-            {
-                resultado = num1 + num2;
-            }
-            if (rbtSubtracao.Checked)
-            {
-                resultado = num1 - num2;
-            }
-            if (rbtDivisao.Checked)
-            {
-                if (num2 == 0)
+                if (rbtAdicao.Checked || rbtSubtracao.Checked || rbtMultiplicacao.Checked || rbtDivisao.Checked)
                 {
-                    MessageBox.Show("Impossivel dividir por zero", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-                }
-                resultado = num1 / num2;
-            }
-            if (rbtMultiplicacao.Checked)
-            {
-                resultado = num1 * num2;
-            }
 
-            lblCalculo.Text = resultado.ToString();
-            limparCamposCalcular();
+
+                    if (rbtAdicao.Checked)
+                    {
+                        resultado = num1 + num2;
+                    }
+                    if (rbtSubtracao.Checked)
+                    {
+                        resultado = num1 - num2;
+                    }
+                    if (rbtDivisao.Checked)
+                    {
+                        if (num2 == 0)
+                        {
+                            MessageBox.Show("Impossivel dividir por zero", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                        }
+                        resultado = num1 / num2;
+                    }
+                    if (rbtMultiplicacao.Checked)
+                    {
+                        resultado = num1 * num2;
+                    }
+
+                    lblCalculo.Text = resultado.ToString();
+                    limparCamposCalcular();
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, selecione uma operação", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("Por favor, selecione uma operação", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                MessageBox.Show("Por favor, inserir somente números", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                limparCampos();
             }
         }
 

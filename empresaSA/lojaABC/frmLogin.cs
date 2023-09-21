@@ -33,15 +33,44 @@ namespace lojaABC
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            //frmMenuPrincipal abrir = new frmMenuPrincipal();
-            //abrir.Show();
-            //this.Hide();
+
             //declaração de variaveis
             string usuario, senha;
 
             //inicializar variaveis
             usuario = txtUsuario.Text;
             senha = txtSenha.Text;
+
+            if (usuario.Equals("Senac") && senha.Equals("Senac"))
+            {
+                frmMenuPrincipal abrir = new frmMenuPrincipal();
+                abrir.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Usuario ou senha inválidos", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsuario.Clear();
+                txtSenha.Clear();
+                txtUsuario.Focus();
+            }
+        }
+
+        private void txtUsuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtSenha.Focus();
+            }
+            
+        }
+
+        private void txtSenha_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btnEntrar.Focus();
+            }
         }
     }
 }
