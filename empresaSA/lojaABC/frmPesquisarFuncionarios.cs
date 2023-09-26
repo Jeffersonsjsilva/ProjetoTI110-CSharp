@@ -67,6 +67,7 @@ namespace lojaABC
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
+            ltbPesquisar.Items.Clear();
             ltbPesquisar.Items.Add(txtDescricao.Text);
         }
     }
