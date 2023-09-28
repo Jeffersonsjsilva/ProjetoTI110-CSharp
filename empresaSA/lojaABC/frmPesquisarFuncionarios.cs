@@ -13,7 +13,7 @@ namespace lojaABC
 {
     public partial class frmPesquisarFuncionarios : Form
     {
-        
+
         public frmPesquisarFuncionarios()
         {
             InitializeComponent();
@@ -46,7 +46,8 @@ namespace lojaABC
             txtDescricao.Clear();
             rdbCodigo.Checked = false;
             rdbNome.Checked = false;
-            ltbPesquisar.Items.Clear();
+            txtDescricao.Enabled = false;
+            //ltbPesquisar.Items.Clear();
             txtDescricao.Focus();
         }
 
@@ -69,6 +70,24 @@ namespace lojaABC
         {
             ltbPesquisar.Items.Clear();
             ltbPesquisar.Items.Add(txtDescricao.Text);
+        }
+
+        private void ltbPesquisar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ltbPesquisar.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, selecione um item da lista.", "ALERTA!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+            }
+            else
+            {
+                string nome = ltbPesquisar.SelectedItem.ToString();
+                frmFuncionarios abrir = new frmFuncionarios(nome);
+                abrir.Show();
+                this.Hide();
+            }
+
+
+
         }
     }
 }

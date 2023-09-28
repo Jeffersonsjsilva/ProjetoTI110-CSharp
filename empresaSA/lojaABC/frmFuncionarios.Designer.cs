@@ -61,6 +61,7 @@ namespace lojaABC
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
+            this.btnCarrega = new System.Windows.Forms.Button();
             this.gpbFuncionarios.SuspendLayout();
             this.pnlCrud.SuspendLayout();
             this.SuspendLayout();
@@ -68,6 +69,7 @@ namespace lojaABC
             // gpbFuncionarios
             // 
             this.gpbFuncionarios.BackColor = System.Drawing.Color.Gainsboro;
+            this.gpbFuncionarios.Controls.Add(this.btnCarrega);
             this.gpbFuncionarios.Controls.Add(this.txtBairro);
             this.gpbFuncionarios.Controls.Add(this.lblBairro);
             this.gpbFuncionarios.Controls.Add(this.cbbEstado);
@@ -351,6 +353,7 @@ namespace lojaABC
             this.btnExcluir.Text = "&Excluir";
             this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnAlterar
             // 
@@ -362,6 +365,7 @@ namespace lojaABC
             this.btnAlterar.Text = "&Alterar";
             this.btnAlterar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnCadastrar
             // 
@@ -386,6 +390,18 @@ namespace lojaABC
             this.btnNovo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
+            // btnCarrega
+            // 
+            this.btnCarrega.BackColor = System.Drawing.Color.DimGray;
+            this.btnCarrega.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnCarrega.Location = new System.Drawing.Point(577, 269);
+            this.btnCarrega.Name = "btnCarrega";
+            this.btnCarrega.Size = new System.Drawing.Size(161, 87);
+            this.btnCarrega.TabIndex = 21;
+            this.btnCarrega.Text = "Carrega CEP";
+            this.btnCarrega.UseVisualStyleBackColor = false;
+            this.btnCarrega.Click += new System.EventHandler(this.btnCarrega_Click);
             // 
             // frmFuncionarios
             // 
@@ -442,5 +458,6 @@ namespace lojaABC
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.Button btnCarrega;
     }
 }
