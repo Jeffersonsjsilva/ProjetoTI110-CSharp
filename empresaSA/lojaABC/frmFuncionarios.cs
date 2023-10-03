@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using MySql.Data.MySqlClient;
 
 namespace lojaABC
 {
@@ -110,7 +111,7 @@ namespace lojaABC
 
             txtNome.Focus();
         }
-        
+
         //Habilitar campos
         public void habilitarCamposAlterar()
         {
@@ -193,11 +194,38 @@ namespace lojaABC
         {
             habilitarCampos();
         }
+        //cadastrando funcionários no banco de dados
+
+        public void cadastraFuncionario()
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "insert into tbFuncionarios(nome,email,cpf,dNasci,endereco,cep,numero,bairro,cidade,estado) values(@nome,@email,@cpf,@dNasci,@endereco,@cep,@numero,@bairro,@cidade,@estado);";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 100).Value = txtNome.Text;
+            comm.Parameters.Add("@email", MySqlDbType.VarChar, 100).Value = txtEmail.Text;
+            comm.Parameters.Add("@cpf", MySqlDbType.VarChar, 14).Value = mskCpf.Text;
+            comm.Parameters.Add("@dNasci", MySqlDbType.Date).Value = dtpDnascimento.Text;
+            comm.Parameters.Add("@endereco", MySqlDbType.VarChar, 100).Value = txtEndereco.Text;
+            comm.Parameters.Add("@cep", MySqlDbType.VarChar, 9).Value = mskCep.Text;
+            comm.Parameters.Add("@numero", MySqlDbType.VarChar, 10).Value = txtNumero.Text;
+            comm.Parameters.Add("@bairro", MySqlDbType.VarChar, 100).Value = txtBairro.Text;
+            comm.Parameters.Add("@cidade", MySqlDbType.VarChar, 100).Value = txtCidade.Text;
+            comm.Parameters.Add("@estado", MySqlDbType.VarChar, 2).Value = cbbEstado.Text;
+
+            comm.Connection = conexao.obterConexao();
+
+            comm.ExecuteNonQuery();
+
+            conexao.fecharConexao();
+        }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            if (txtNome.Text.Equals("")|| txtEmail.Text.Equals("")||txtEndereco.Text.Equals("")||txtNumero.Text.Equals("")||
-                txtCidade.Text.Equals("")||txtBairro.Text.Equals("")||mskCpf.Text.Equals("   .   .   -")||mskCep.Text.Equals("     -")||cbbEstado.Items.Equals(""))
+            if (txtNome.Text.Equals("") || txtEmail.Text.Equals("") || txtEndereco.Text.Equals("") || txtNumero.Text.Equals("") ||
+                txtCidade.Text.Equals("") || txtBairro.Text.Equals("") || mskCpf.Text.Equals("   .   .   -") || mskCep.Text.Equals("     -") || cbbEstado.Items.Equals(""))
             {
                 MessageBox.Show("Favor preencher campos!!!");
                 txtNome.Focus();
@@ -239,20 +267,38 @@ namespace lojaABC
             }
             else
             {
-                
+
             }
         }
 
-        private void btnCarrega_Click(object sender, EventArgs e)
+        private void mskCep_KeyDown(object sender, KeyEventArgs e)
         {
-            WSCorreios.AtendeClienteClient ws = new WSCorreios.AtendeClienteClient();
 
-            WSCorreios.enderecoERP endereco = ws.consultaCEP(mskCep.Text);
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
 
-            txtEndereco.Text = endereco.end;
-            txtBairro.Text = endereco.bairro;
-            txtCidade.Text = endereco.cidade;
-            cbbEstado.Text = endereco.uf;
+                    WSCorreios.AtendeClienteClient ws = new WSCorreios.AtendeClienteClient();
+
+                    WSCorreios.enderecoERP endereco = ws.consultaCEP(mskCep.Text);
+
+                    txtEndereco.Text = endereco.end;
+                    txtBairro.Text = endereco.bairro;
+                    txtCidade.Text = endereco.cidade;
+                    cbbEstado.Text = endereco.uf;
+
+                    txtNumero.Focus();
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("CEP INVÁLIDO", "ALERTA!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                limparCampos();
+                mskCep.Focus();
+            }
+
         }
     }
 }
