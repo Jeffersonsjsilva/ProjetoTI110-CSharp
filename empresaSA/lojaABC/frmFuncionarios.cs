@@ -193,10 +193,11 @@ namespace lojaABC
         private void btnNovo_Click(object sender, EventArgs e)
         {
             habilitarCampos();
+            carregaCodigo();
         }
         //cadastrando funcionários no banco de dados
 
-        public void cadastraFuncionario()
+        public int cadastraFuncionario()
         {
             MySqlCommand comm = new MySqlCommand();
             comm.CommandText = "insert into tbFuncionarios(nome,email,cpf,dNasci,endereco,cep,numero,bairro,cidade,estado) values(@nome,@email,@cpf,@dNasci,@endereco,@cep,@numero,@bairro,@cidade,@estado);";
@@ -207,7 +208,7 @@ namespace lojaABC
             comm.Parameters.Add("@nome", MySqlDbType.VarChar, 100).Value = txtNome.Text;
             comm.Parameters.Add("@email", MySqlDbType.VarChar, 100).Value = txtEmail.Text;
             comm.Parameters.Add("@cpf", MySqlDbType.VarChar, 14).Value = mskCpf.Text;
-            comm.Parameters.Add("@dNasci", MySqlDbType.Date).Value = dtpDnascimento.Text;
+            comm.Parameters.Add("@dNasci", MySqlDbType.Date).Value =Convert.ToDateTime(dtpDnascimento.Text);
             comm.Parameters.Add("@endereco", MySqlDbType.VarChar, 100).Value = txtEndereco.Text;
             comm.Parameters.Add("@cep", MySqlDbType.VarChar, 9).Value = mskCep.Text;
             comm.Parameters.Add("@numero", MySqlDbType.VarChar, 10).Value = txtNumero.Text;
@@ -217,7 +218,56 @@ namespace lojaABC
 
             comm.Connection = conexao.obterConexao();
 
-            comm.ExecuteNonQuery();
+            int res = comm.ExecuteNonQuery();
+
+            conexao.fecharConexao();
+
+            return res;
+        }
+
+        // carrega codigo
+        public void carregaCodigo()
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select codFunc+1 from tbFuncionarios order by codFunc desc;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Connection = conexao.obterConexao();
+            MySqlDataReader DR;
+            DR = comm.ExecuteReader();
+            DR.Read();
+
+            txtCodigo.Text = Convert.ToString(DR.GetInt32(0));
+
+
+            conexao.fecharConexao();
+        }
+        //carregar funcionario
+        public void carregaFuncionario(string nome)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select * from tbFuncionarios where nome = @nome;" ;
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 100).Value = nome;
+
+            comm.Connection = conexao.obterConexao();
+
+            MySqlDataReader DR;
+            DR = comm.ExecuteReader();
+            DR.Read();
+
+            txtCodigo.Text = Convert.ToString(DR.GetInt32(0));
+            txtNome.Text = DR.GetString(1);
+            txtEmail.Text = DR.GetString(2);
+            mskCpf.Text = DR.GetString(3);
+            dtpDnascimento.Text = DR.GetString(4);
+            txtEndereco.Text = DR.GetString(5);
+            mskCep.Text = DR.GetString(6);
+            cbbEstado.Text = DR.GetString(7);
+            txtNumero.Text = DR.GetString(8);
+            txtCidade.Text = DR.GetString(9);
+            txtBairro.Text = DR.GetString(10);
 
             conexao.fecharConexao();
         }
@@ -232,9 +282,17 @@ namespace lojaABC
             }
             else
             {
-                MessageBox.Show("Cadastrado com sucesso!!!");
-                desabilitarCamposNovo();
-                limparCampos();
+                if (cadastraFuncionario() == 1)
+                {
+                    MessageBox.Show("CADASTRADO COM SUCESSO!","Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    desabilitarCamposNovo();
+                    limparCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao cadastrar!","ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
         }
 
