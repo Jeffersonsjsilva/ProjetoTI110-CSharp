@@ -34,6 +34,7 @@ namespace lojaABC
             txtNome.Text = nome;
             //habilitar os campos
             habilitarCamposAlterar();
+            carregaFuncionario(nome);
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -264,10 +265,10 @@ namespace lojaABC
             dtpDnascimento.Text = DR.GetString(4);
             txtEndereco.Text = DR.GetString(5);
             mskCep.Text = DR.GetString(6);
-            cbbEstado.Text = DR.GetString(7);
-            txtNumero.Text = DR.GetString(8);
+            txtNumero.Text = DR.GetString(7);
+            txtBairro.Text = DR.GetString(8);
             txtCidade.Text = DR.GetString(9);
-            txtBairro.Text = DR.GetString(10);
+            cbbEstado.Text = DR.GetString(10);
 
             conexao.fecharConexao();
         }
@@ -312,21 +313,81 @@ namespace lojaABC
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Alterado com sucesso", "ALERTA!", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-            limparCampos();
+
+            if (alterarFuncionarios(Convert.ToInt32(txtCodigo.Text)) == 1)
+            {
+                MessageBox.Show("Alterado com sucesso", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                limparCampos();
+            }
+            else
+            {
+                MessageBox.Show("Erro ao alterar", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                limparCampos();
+            }
+            
         }
+
+        // Alterar funcionarios
+        public int alterarFuncionarios(int codigo)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "update tbFuncionarios set nome = @nome, email = @email, cpf = @cpf, dNasci = @dNasci, endereco = @endereco, cep = @cep, numero = @numero, bairro = @bairro, cidade = @cidade, estado = @estado where codFunc = @codFunc;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 100).Value = txtNome.Text;
+            comm.Parameters.Add("@email", MySqlDbType.VarChar, 100).Value = txtEmail.Text;
+            comm.Parameters.Add("@cpf", MySqlDbType.VarChar, 14).Value = mskCpf.Text;
+            comm.Parameters.Add("@dNasci", MySqlDbType.Date).Value = Convert.ToDateTime(dtpDnascimento.Text);
+            comm.Parameters.Add("@endereco", MySqlDbType.VarChar, 100).Value = txtEndereco.Text;
+            comm.Parameters.Add("@cep", MySqlDbType.VarChar, 9).Value = mskCep.Text;
+            comm.Parameters.Add("@numero", MySqlDbType.VarChar, 10).Value = txtNumero.Text;
+            comm.Parameters.Add("@bairro", MySqlDbType.VarChar, 100).Value = txtBairro.Text;
+            comm.Parameters.Add("@cidade", MySqlDbType.VarChar, 100).Value = txtCidade.Text;
+            comm.Parameters.Add("@estado", MySqlDbType.VarChar, 2).Value = cbbEstado.Text;
+            comm.Parameters.Add("@codFunc", MySqlDbType.Int32).Value = codigo;
+
+            comm.Connection = conexao.obterConexao();
+
+            int res = comm.ExecuteNonQuery();
+
+            conexao.fecharConexao();
+
+            return res;
+        }
+
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             DialogResult resp = MessageBox.Show("Deseja excluir?", "ALERTA!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
             if (resp == DialogResult.OK)
             {
+                excluirFuncionarios(Convert.ToInt32(txtCodigo.Text));
                 limparCampos();
             }
             else
             {
 
             }
+        }
+
+        //excluir funcionario
+
+        public void excluirFuncionarios(int codigo)
+        {
+            MySqlCommand comm = new MySqlCommand();
+
+            comm.CommandText = "delete from tbFuncionarios where codFunc = @codFunc;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@codFunc", MySqlDbType.Int32).Value = codigo;
+
+            comm.Connection = conexao.obterConexao();
+
+            comm.ExecuteNonQuery();
+
+            conexao.fecharConexao();
         }
 
         private void mskCep_KeyDown(object sender, KeyEventArgs e)
