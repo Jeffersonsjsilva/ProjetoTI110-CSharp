@@ -36,3 +36,4 @@ C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\l
 C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\lojaABC\bin\x64\Debug\System.Numerics.Vectors.xml
 C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\lojaABC\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\lojaABC\obj\x64\Debug\lojaABC.csproj.CopyComplete
+C:\Users\jefferson.sjsilva\Documents\Visual Studio 2019\ProjetoTI110\empresaSA\lojaABC\obj\x64\Debug\lojaABC.frmCadastroUsuario.resources
