@@ -226,7 +226,7 @@ namespace lojaABC
             return res;
         }
 
-        // carrega codigo
+        // carrega codigo funcionario
         public void carregaCodigo()
         {
             MySqlCommand comm = new MySqlCommand();

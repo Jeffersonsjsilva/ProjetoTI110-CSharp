@@ -47,6 +47,10 @@ namespace lojaABC
             this.gpbFuncionarios = new System.Windows.Forms.GroupBox();
             this.txtRepetirSenha = new System.Windows.Forms.TextBox();
             this.lblRepeteSenha = new System.Windows.Forms.Label();
+            this.lblFuncSemUsu = new System.Windows.Forms.Label();
+            this.lstFuncSemUsu = new System.Windows.Forms.ListBox();
+            this.txtCodFunc = new System.Windows.Forms.TextBox();
+            this.lblCodFunc = new System.Windows.Forms.Label();
             this.pnlCrud.SuspendLayout();
             this.gpbFuncionarios.SuspendLayout();
             this.SuspendLayout();
@@ -76,6 +80,7 @@ namespace lojaABC
             this.btnVoltar.Text = "&Voltar";
             this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // btnLimpar
             // 
@@ -131,6 +136,7 @@ namespace lojaABC
             this.btnCadastrar.Text = "&Cadastrar";
             this.btnCadastrar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // btnNovo
             // 
@@ -142,6 +148,7 @@ namespace lojaABC
             this.btnNovo.Text = "&Novo";
             this.btnNovo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // lblCodigo
             // 
@@ -154,6 +161,7 @@ namespace lojaABC
             // 
             // txtCodigo
             // 
+            this.txtCodigo.Enabled = false;
             this.txtCodigo.Location = new System.Drawing.Point(153, 70);
             this.txtCodigo.MaxLength = 5;
             this.txtCodigo.Name = "txtCodigo";
@@ -199,6 +207,10 @@ namespace lojaABC
             // gpbFuncionarios
             // 
             this.gpbFuncionarios.BackColor = System.Drawing.Color.Gainsboro;
+            this.gpbFuncionarios.Controls.Add(this.txtCodFunc);
+            this.gpbFuncionarios.Controls.Add(this.lblCodFunc);
+            this.gpbFuncionarios.Controls.Add(this.lstFuncSemUsu);
+            this.gpbFuncionarios.Controls.Add(this.lblFuncSemUsu);
             this.gpbFuncionarios.Controls.Add(this.txtRepetirSenha);
             this.gpbFuncionarios.Controls.Add(this.lblRepeteSenha);
             this.gpbFuncionarios.Controls.Add(this.txtSenha);
@@ -213,7 +225,7 @@ namespace lojaABC
             this.gpbFuncionarios.Size = new System.Drawing.Size(747, 362);
             this.gpbFuncionarios.TabIndex = 0;
             this.gpbFuncionarios.TabStop = false;
-            this.gpbFuncionarios.Text = "Dados";
+            this.gpbFuncionarios.Text = " ";
             // 
             // txtRepetirSenha
             // 
@@ -233,6 +245,43 @@ namespace lojaABC
             this.lblRepeteSenha.Size = new System.Drawing.Size(99, 18);
             this.lblRepeteSenha.TabIndex = 10;
             this.lblRepeteSenha.Text = "Repetir senha";
+            // 
+            // lblFuncSemUsu
+            // 
+            this.lblFuncSemUsu.AutoSize = true;
+            this.lblFuncSemUsu.Location = new System.Drawing.Point(504, 70);
+            this.lblFuncSemUsu.Name = "lblFuncSemUsu";
+            this.lblFuncSemUsu.Size = new System.Drawing.Size(188, 18);
+            this.lblFuncSemUsu.TabIndex = 11;
+            this.lblFuncSemUsu.Text = "Funcionários sem usúarios";
+            // 
+            // lstFuncSemUsu
+            // 
+            this.lstFuncSemUsu.FormattingEnabled = true;
+            this.lstFuncSemUsu.ItemHeight = 18;
+            this.lstFuncSemUsu.Location = new System.Drawing.Point(485, 101);
+            this.lstFuncSemUsu.Name = "lstFuncSemUsu";
+            this.lstFuncSemUsu.Size = new System.Drawing.Size(235, 148);
+            this.lstFuncSemUsu.TabIndex = 12;
+            this.lstFuncSemUsu.SelectedIndexChanged += new System.EventHandler(this.lstFuncSemUsu_SelectedIndexChanged);
+            // 
+            // txtCodFunc
+            // 
+            this.txtCodFunc.Enabled = false;
+            this.txtCodFunc.Location = new System.Drawing.Point(628, 296);
+            this.txtCodFunc.MaxLength = 5;
+            this.txtCodFunc.Name = "txtCodFunc";
+            this.txtCodFunc.Size = new System.Drawing.Size(100, 24);
+            this.txtCodFunc.TabIndex = 14;
+            // 
+            // lblCodFunc
+            // 
+            this.lblCodFunc.AutoSize = true;
+            this.lblCodFunc.Location = new System.Drawing.Point(484, 299);
+            this.lblCodFunc.Name = "lblCodFunc";
+            this.lblCodFunc.Size = new System.Drawing.Size(138, 18);
+            this.lblCodFunc.TabIndex = 13;
+            this.lblCodFunc.Text = "Código Funcionário";
             // 
             // frmCadastroUsuario
             // 
@@ -275,5 +324,9 @@ namespace lojaABC
         private System.Windows.Forms.GroupBox gpbFuncionarios;
         private System.Windows.Forms.TextBox txtRepetirSenha;
         private System.Windows.Forms.Label lblRepeteSenha;
+        private System.Windows.Forms.ListBox lstFuncSemUsu;
+        private System.Windows.Forms.Label lblFuncSemUsu;
+        private System.Windows.Forms.TextBox txtCodFunc;
+        private System.Windows.Forms.Label lblCodFunc;
     }
 }
