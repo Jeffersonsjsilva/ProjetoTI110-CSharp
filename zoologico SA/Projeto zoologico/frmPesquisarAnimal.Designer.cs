@@ -50,6 +50,7 @@ namespace Projeto_zoologico
             this.lbbResultado.Name = "lbbResultado";
             this.lbbResultado.Size = new System.Drawing.Size(260, 342);
             this.lbbResultado.TabIndex = 7;
+            this.lbbResultado.SelectedIndexChanged += new System.EventHandler(this.lbbResultado_SelectedIndexChanged);
             // 
             // btnPesquisar
             // 
@@ -62,6 +63,7 @@ namespace Projeto_zoologico
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // btnLimpar
             // 
@@ -74,6 +76,7 @@ namespace Projeto_zoologico
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // gpbPesquisar
             // 
@@ -124,17 +127,19 @@ namespace Projeto_zoologico
             // lblDescricao
             // 
             this.lblDescricao.AutoSize = true;
+            this.lblDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescricao.Location = new System.Drawing.Point(28, 188);
             this.lblDescricao.Name = "lblDescricao";
-            this.lblDescricao.Size = new System.Drawing.Size(55, 13);
+            this.lblDescricao.Size = new System.Drawing.Size(80, 20);
             this.lblDescricao.TabIndex = 4;
             this.lblDescricao.Text = "Descrição";
             // 
             // txtDescricao
             // 
-            this.txtDescricao.Location = new System.Drawing.Point(105, 185);
+            this.txtDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescricao.Location = new System.Drawing.Point(114, 188);
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(308, 20);
+            this.txtDescricao.Size = new System.Drawing.Size(308, 26);
             this.txtDescricao.TabIndex = 4;
             // 
             // btnVoltar
