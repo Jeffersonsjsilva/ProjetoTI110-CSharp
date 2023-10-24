@@ -27,13 +27,25 @@ namespace Projeto_zoologico
             rdbCodigo.Checked = false;
             rdbNome.Checked = false;
             rdbTipo.Checked = false;
+            cbbTipos.Enabled = false;
         }
         public void habilitarCampos()
         {
             txtDescricao.Enabled = true;
             btnLimpar.Enabled = true;
             btnPesquisar.Enabled = true;
+            cbbTipos.Enabled = false;
+            cbbTipos.SelectedIndex = -1;
             txtDescricao.Focus();
+        }
+        public void habilitarCamposTipo()
+        {
+            txtDescricao.Enabled = false;
+            cbbTipos.Enabled = true;
+            btnLimpar.Enabled = true;
+            btnPesquisar.Enabled = true;
+            cbbTipos.Focus();
+            txtDescricao.Clear();
         }
         public void limparCampos()
         {
@@ -42,6 +54,7 @@ namespace Projeto_zoologico
             rdbCodigo.Checked = false;
             rdbNome.Checked = false;
             rdbTipo.Checked = false;
+            cbbTipos.SelectedIndex = -1;
             txtDescricao.Focus();
         }
 
@@ -50,11 +63,11 @@ namespace Projeto_zoologico
         {
             MySqlCommand comm = new MySqlCommand();
 
-            comm.CommandText = "select nome from tbanimais where nome like '%"+nome+"%';";
+            comm.CommandText = "select nome from tbanimais where nome like '%" + nome + "%';";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
-            comm.Parameters.Add("@nome",MySqlDbType.VarChar,100).Value = nome;
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 100).Value = nome;
 
             comm.Connection = conexao.obterConexao();
 
@@ -136,7 +149,7 @@ namespace Projeto_zoologico
 
         private void rdbTipo_CheckedChanged(object sender, EventArgs e)
         {
-            habilitarCampos();
+            habilitarCamposTipo();
         }
 
         private void rdbCodigo_CheckedChanged(object sender, EventArgs e)
@@ -153,31 +166,46 @@ namespace Projeto_zoologico
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            if (txtDescricao.Text == "")
+            if (rdbNome.Checked)
             {
-                MessageBox.Show("Favor, preencher o campo descrição", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                if (rdbCodigo.Checked)
+                if (txtDescricao.Text == "")
                 {
-                    pesquisarCodigo();
+                    MessageBox.Show("Favor, preencher o campo Nome/código", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                if (rdbNome.Checked)
+                else
                 {
                     pesquisarNome(txtDescricao.Text);
                 }
-                if (rdbTipo.Checked)
+
+            }else if (rdbTipo.Checked)
+            {
+                if (cbbTipos.Text == "")
                 {
-                    pesquisarTipo(txtDescricao.Text);
+                    MessageBox.Show("Favor, escolha um item na lista Tipos", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    pesquisarTipo(cbbTipos.Text);
                 }
             }
-            
+            else if (rdbCodigo.Checked)
+            {
+                if (txtDescricao.Text == "")
+                {
+                    MessageBox.Show("Favor, preencher o campo Nome/código", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    pesquisarCodigo();
+                }
+            }
+
+
         }
 
         private void lbbResultado_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(lbbResultado.SelectedItem == null)
+            if (lbbResultado.SelectedItem == null)
             {
                 MessageBox.Show("Por favor, selecione um dos items da lista", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -196,6 +224,6 @@ namespace Projeto_zoologico
             desabilitarCampos();
         }
     }
-   
+
 
 }

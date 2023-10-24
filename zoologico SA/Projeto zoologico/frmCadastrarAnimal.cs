@@ -33,6 +33,7 @@ namespace Projeto_zoologico
             desabilitarCamposNovo();
             txtNome.Text = nome;
             carregarAnimais(nome);
+            cbbTipos.Enabled = true;
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -47,7 +48,7 @@ namespace Projeto_zoologico
             txtCodigo.Enabled = false;
             txtIdade.Enabled = false;
             txtNome.Enabled = false;
-            txtTipo.Enabled = false;
+            cbbTipos.Enabled = false;
 
             btnAlterar.Enabled = false;
             btnCadastrar.Enabled = false;
@@ -68,7 +69,7 @@ namespace Projeto_zoologico
         {
             txtIdade.Enabled = true;
             txtNome.Enabled = true;
-            txtTipo.Enabled = true;
+            cbbTipos.Enabled = true;
 
             btnAlterar.Enabled = false;
             btnCadastrar.Enabled = true;
@@ -81,14 +82,28 @@ namespace Projeto_zoologico
         
         public void habilitarCamposAlterar()
         {
-            btnAlterar.Enabled = true;
-            btnCadastrar.Enabled = false;
-            btnExcluir.Enabled = true;
+            btnAlterar.Enabled = false;
+            btnCadastrar.Enabled = true;
+            btnExcluir.Enabled = false;
             btnPesquisar.Enabled = true;
             btnLimpar.Enabled = true;
             txtNome.Focus();
         }
 
+        public void habilitarCamposExcluir()
+        {
+            txtIdade.Enabled = false;
+            txtNome.Enabled = false;
+            cbbTipos.Enabled = false;
+
+            btnAlterar.Enabled = false;
+            btnCadastrar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnLimpar.Enabled = false;
+            btnNovo.Enabled = true;
+            btnPesquisar.Enabled = true;
+            btnSair.Enabled = true;
+        }
         //limpar campos
 
         public void limparCampos()
@@ -96,7 +111,7 @@ namespace Projeto_zoologico
             txtCodigo.Clear();
             txtIdade.Clear();
             txtNome.Clear();
-            txtTipo.Clear();
+            cbbTipos.SelectedIndex = -1;
             txtNome.Focus();
         }
 
@@ -110,7 +125,7 @@ namespace Projeto_zoologico
             comm.Parameters.Clear();
 
             comm.Parameters.Add("@nome",MySqlDbType.VarChar,  100).Value = txtNome.Text;
-            comm.Parameters.Add("@tipo", MySqlDbType.VarChar, 100).Value = txtTipo.Text;
+            comm.Parameters.Add("@tipo", MySqlDbType.VarChar, 100).Value = cbbTipos.Text;
             comm.Parameters.Add("@idade", MySqlDbType.VarChar, 100).Value = Convert.ToInt32(txtIdade.Text);
 
             comm.Connection = conexao.obterConexao();
@@ -140,7 +155,7 @@ namespace Projeto_zoologico
 
             txtCodigo.Text = Convert.ToString(DR.GetInt32(0));
             txtNome.Text = DR.GetString(1);
-            txtTipo.Text = DR.GetString(2);
+            cbbTipos.Text = DR.GetString(2);
             txtIdade.Text = Convert.ToString(DR.GetString(3));
 
             conexao.fecharConexao();
@@ -154,7 +169,7 @@ namespace Projeto_zoologico
 
             comm.Parameters.Clear();
             comm.Parameters.Add("@nome",MySqlDbType.VarChar,100).Value =txtNome.Text;
-            comm.Parameters.Add("@tipo", MySqlDbType.VarChar, 100).Value = txtTipo.Text;
+            comm.Parameters.Add("@tipo", MySqlDbType.VarChar, 100).Value = cbbTipos.Text;
             comm.Parameters.Add("@idade", MySqlDbType.VarChar, 100).Value = Convert.ToInt32(txtIdade.Text);
             comm.Parameters.Add("@codAni", MySqlDbType.Int32).Value = codigo;
 
@@ -168,18 +183,26 @@ namespace Projeto_zoologico
 
         public void carregarCodigo()
         {
-            MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "select codAni+1 from tbAnimais order by codAni desc;";
-            comm.CommandType = CommandType.Text;
+            try
+            {
+                MySqlCommand comm = new MySqlCommand();
+                comm.CommandText = "select codAni+1 from tbAnimais order by codAni desc;";
+                comm.CommandType = CommandType.Text;
 
-            comm.Connection = conexao.obterConexao();
+                comm.Connection = conexao.obterConexao();
 
-            MySqlDataReader DR;
+                MySqlDataReader DR;
 
-            DR = comm.ExecuteReader();
-            DR.Read();
+                DR = comm.ExecuteReader();
+                DR.Read();
 
-            txtCodigo.Text = Convert.ToString(DR.GetInt32(0));
+                txtCodigo.Text = Convert.ToString(DR.GetInt32(0));
+            }
+            catch (Exception)
+            {
+                txtCodigo.Text = "1";
+             
+            }
 
             conexao.fecharConexao();
 
@@ -220,16 +243,16 @@ namespace Projeto_zoologico
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            if (txtIdade.Text.Equals("")||txtNome.Text.Equals("")||txtTipo.Text.Equals(""))
+            if (txtIdade.Text.Equals("")||txtNome.Text.Equals("")||cbbTipos.Text.Equals(""))
             {
-                MessageBox.Show("Favor preencher campos!!!");
+                MessageBox.Show("Favor preencher campos!","Mensagem do sistema", MessageBoxButtons.OK,MessageBoxIcon.Information);
                 txtNome.Focus();
             }
             else
             {
                 if (cadastrarAnimal() == 1)
                 {
-                    MessageBox.Show("CADASTRADO COM SUCESSO!", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    MessageBox.Show("CADASTRADO COM SUCESSO!", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     desabilitarCampos();
                     limparCampos();
                 }
@@ -254,11 +277,14 @@ namespace Projeto_zoologico
             {
                 MessageBox.Show("Alterado com sucesso", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 limparCampos();
+                habilitarCamposAlterar();
+                carregarCodigo();
             }
             else
             {
                 MessageBox.Show("Erro ao alterar", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 limparCampos();
+                desabilitarCampos();
             }
         }
 
@@ -270,6 +296,7 @@ namespace Projeto_zoologico
                 deletarAnimal(Convert.ToInt32(txtCodigo.Text));
                 MessageBox.Show("Excluido com sucesso", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 limparCampos();
+                habilitarCamposExcluir();
             }
             else
             {
