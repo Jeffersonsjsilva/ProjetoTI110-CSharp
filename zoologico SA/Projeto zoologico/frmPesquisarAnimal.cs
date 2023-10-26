@@ -176,6 +176,13 @@ namespace Projeto_zoologico
                 {
                     pesquisarNome(txtDescricao.Text);
                 }
+                if (lbbResultado.Items.Count == 0)
+                {
+                    MessageBox.Show("Nome não encontrado no sistema", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtDescricao.Clear();
+                    txtDescricao.Focus();
+                    rdbNome.Enabled = true;
+                }
 
             }else if (rdbTipo.Checked)
             {
