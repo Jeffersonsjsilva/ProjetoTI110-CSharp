@@ -229,19 +229,27 @@ namespace lojaABC
         // carrega codigo funcionario
         public void carregaCodigo()
         {
-            MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "select codFunc+1 from tbFuncionarios order by codFunc desc;";
-            comm.CommandType = CommandType.Text;
+            try
+            {
+                MySqlCommand comm = new MySqlCommand();
+                comm.CommandText = "select codFunc+1 from tbFuncionarios order by codFunc desc;";
+                comm.CommandType = CommandType.Text;
 
-            comm.Connection = conexao.obterConexao();
-            MySqlDataReader DR;
-            DR = comm.ExecuteReader();
-            DR.Read();
+                comm.Connection = conexao.obterConexao();
+                MySqlDataReader DR;
+                DR = comm.ExecuteReader();
+                DR.Read();
 
-            txtCodigo.Text = Convert.ToString(DR.GetInt32(0));
+                txtCodigo.Text = Convert.ToString(DR.GetInt32(0));
 
 
-            conexao.fecharConexao();
+                conexao.fecharConexao();
+            }
+            catch (Exception)
+            {
+                txtCodigo.Text = "1";                
+            }
+            
         }
         //carregar funcionario
         public void carregaFuncionario(string nome)
