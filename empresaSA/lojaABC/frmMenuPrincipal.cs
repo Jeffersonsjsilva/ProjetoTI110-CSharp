@@ -53,5 +53,12 @@ namespace lojaABC
             abrir.Show();
             this.Hide();
         }
+
+        private void btnCalcularGorjeta_Click(object sender, EventArgs e)
+        {
+            frmCalcularGorjeta abrir = new frmCalcularGorjeta();
+            abrir.Show();
+            this.Hide();
+        }
     }
 }

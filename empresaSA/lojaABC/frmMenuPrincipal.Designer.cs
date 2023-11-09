@@ -37,6 +37,7 @@ namespace lojaABC
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnVendas = new System.Windows.Forms.Button();
             this.btnProdutos = new System.Windows.Forms.Button();
+            this.btnCalcularGorjeta = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnFuncionarios
@@ -47,9 +48,9 @@ namespace lojaABC
             this.btnFuncionarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFuncionarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFuncionarios.Image = ((System.Drawing.Image)(resources.GetObject("btnFuncionarios.Image")));
-            this.btnFuncionarios.Location = new System.Drawing.Point(91, 12);
+            this.btnFuncionarios.Location = new System.Drawing.Point(77, 12);
             this.btnFuncionarios.Name = "btnFuncionarios";
-            this.btnFuncionarios.Size = new System.Drawing.Size(159, 211);
+            this.btnFuncionarios.Size = new System.Drawing.Size(173, 150);
             this.btnFuncionarios.TabIndex = 0;
             this.btnFuncionarios.Text = "&Funcionários";
             this.btnFuncionarios.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -63,10 +64,10 @@ namespace lojaABC
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVoltar.Image = ((System.Drawing.Image)(resources.GetObject("btnVoltar.Image")));
-            this.btnVoltar.Location = new System.Drawing.Point(346, 506);
+            this.btnVoltar.Location = new System.Drawing.Point(660, 518);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(86, 31);
-            this.btnVoltar.TabIndex = 6;
+            this.btnVoltar.TabIndex = 7;
             this.btnVoltar.Text = "Voltar";
             this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -81,9 +82,9 @@ namespace lojaABC
             this.btnFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFornecedor.Image = ((System.Drawing.Image)(resources.GetObject("btnFornecedor.Image")));
-            this.btnFornecedor.Location = new System.Drawing.Point(91, 267);
+            this.btnFornecedor.Location = new System.Drawing.Point(77, 196);
             this.btnFornecedor.Name = "btnFornecedor";
-            this.btnFornecedor.Size = new System.Drawing.Size(159, 211);
+            this.btnFornecedor.Size = new System.Drawing.Size(173, 150);
             this.btnFornecedor.TabIndex = 3;
             this.btnFornecedor.Text = "&Fornecedores";
             this.btnFornecedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -98,9 +99,9 @@ namespace lojaABC
             this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClientes.Image = ((System.Drawing.Image)(resources.GetObject("btnClientes.Image")));
-            this.btnClientes.Location = new System.Drawing.Point(314, 267);
+            this.btnClientes.Location = new System.Drawing.Point(314, 196);
             this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(159, 211);
+            this.btnClientes.Size = new System.Drawing.Size(173, 150);
             this.btnClientes.TabIndex = 4;
             this.btnClientes.Text = "&Clientes";
             this.btnClientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -117,7 +118,7 @@ namespace lojaABC
             this.btnUsuarios.Image = ((System.Drawing.Image)(resources.GetObject("btnUsuarios.Image")));
             this.btnUsuarios.Location = new System.Drawing.Point(314, 12);
             this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.Size = new System.Drawing.Size(159, 211);
+            this.btnUsuarios.Size = new System.Drawing.Size(173, 150);
             this.btnUsuarios.TabIndex = 1;
             this.btnUsuarios.Text = "&Usuários";
             this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -133,10 +134,10 @@ namespace lojaABC
             this.btnVendas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVendas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVendas.Image = ((System.Drawing.Image)(resources.GetObject("btnVendas.Image")));
-            this.btnVendas.Location = new System.Drawing.Point(535, 267);
+            this.btnVendas.Location = new System.Drawing.Point(555, 12);
             this.btnVendas.Name = "btnVendas";
-            this.btnVendas.Size = new System.Drawing.Size(159, 211);
-            this.btnVendas.TabIndex = 5;
+            this.btnVendas.Size = new System.Drawing.Size(173, 150);
+            this.btnVendas.TabIndex = 2;
             this.btnVendas.Text = "&Vendas";
             this.btnVendas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnVendas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -150,14 +151,32 @@ namespace lojaABC
             this.btnProdutos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProdutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProdutos.Image = ((System.Drawing.Image)(resources.GetObject("btnProdutos.Image")));
-            this.btnProdutos.Location = new System.Drawing.Point(535, 12);
+            this.btnProdutos.Location = new System.Drawing.Point(555, 196);
             this.btnProdutos.Name = "btnProdutos";
-            this.btnProdutos.Size = new System.Drawing.Size(159, 211);
-            this.btnProdutos.TabIndex = 2;
+            this.btnProdutos.Size = new System.Drawing.Size(173, 150);
+            this.btnProdutos.TabIndex = 5;
             this.btnProdutos.Text = "&Produtos";
             this.btnProdutos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnProdutos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnProdutos.UseVisualStyleBackColor = false;
+            // 
+            // btnCalcularGorjeta
+            // 
+            this.btnCalcularGorjeta.BackColor = System.Drawing.Color.Cornsilk;
+            this.btnCalcularGorjeta.FlatAppearance.BorderColor = System.Drawing.Color.Crimson;
+            this.btnCalcularGorjeta.FlatAppearance.BorderSize = 2;
+            this.btnCalcularGorjeta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCalcularGorjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalcularGorjeta.Image = ((System.Drawing.Image)(resources.GetObject("btnCalcularGorjeta.Image")));
+            this.btnCalcularGorjeta.Location = new System.Drawing.Point(77, 376);
+            this.btnCalcularGorjeta.Name = "btnCalcularGorjeta";
+            this.btnCalcularGorjeta.Size = new System.Drawing.Size(173, 150);
+            this.btnCalcularGorjeta.TabIndex = 6;
+            this.btnCalcularGorjeta.Text = "&Calculadora de Gorjeta";
+            this.btnCalcularGorjeta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCalcularGorjeta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCalcularGorjeta.UseVisualStyleBackColor = false;
+            this.btnCalcularGorjeta.Click += new System.EventHandler(this.btnCalcularGorjeta_Click);
             // 
             // frmMenuPrincipal
             // 
@@ -165,6 +184,7 @@ namespace lojaABC
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.btnCalcularGorjeta);
             this.Controls.Add(this.btnVendas);
             this.Controls.Add(this.btnProdutos);
             this.Controls.Add(this.btnClientes);
@@ -192,5 +212,6 @@ namespace lojaABC
         private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.Button btnVendas;
         private System.Windows.Forms.Button btnProdutos;
+        private System.Windows.Forms.Button btnCalcularGorjeta;
     }
 }

@@ -55,7 +55,7 @@ namespace lojaABC
         {
             MySqlCommand comm = new MySqlCommand();
 
-            comm.CommandText = "insert into tbConta(avaliacao, valorGorjeta, valorConta, valorTotal, codFunc) values (@avaliacao, @valorGorjeta, @ValorConta, @valorTotal, @codFunc);";
+            comm.CommandText = "insert into tbConta(avaliacao, valorGorjeta, valorConta, valorTotal, data, codFunc) values (@avaliacao, @valorGorjeta, @ValorConta, @valorTotal, @data, @codFunc);";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
@@ -63,7 +63,9 @@ namespace lojaABC
             comm.Parameters.Add("@valorGorjeta", MySqlDbType.Decimal, 9).Value = txtValorGorjeta.Text;
             comm.Parameters.Add("@valorConta", MySqlDbType.Decimal, 9).Value = txtValorConta.Text;
             comm.Parameters.Add("@valorTotal", MySqlDbType.Decimal, 9).Value = txtValorTotal.Text;
+            comm.Parameters.Add("@data", MySqlDbType.Date).Value = Convert.ToDateTime(dtpData.Text);
             comm.Parameters.Add("@codFunc", MySqlDbType.VarChar, 100).Value = txtCodigoFunc.Text;
+            
 
             comm.Connection = conexao.obterConexao();
 
@@ -189,7 +191,16 @@ namespace lojaABC
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            frmMenuPrincipal abrir = new frmMenuPrincipal();
+            abrir.Show();
+            this.Hide();
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            frmPesquisarConta abrir = new frmPesquisarConta();
+            abrir.Show();
+            this.Hide();
         }
     }
 }

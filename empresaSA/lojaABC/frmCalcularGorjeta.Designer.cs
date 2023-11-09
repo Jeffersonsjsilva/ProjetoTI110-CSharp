@@ -48,8 +48,11 @@ namespace lojaABC
             this.lblCodigoConta = new System.Windows.Forms.Label();
             this.txtCodigoConta = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPesquisar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
+            this.lblData = new System.Windows.Forms.Label();
+            this.dtpData = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +70,7 @@ namespace lojaABC
             // 
             this.lblValorConta.AutoSize = true;
             this.lblValorConta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorConta.Location = new System.Drawing.Point(160, 191);
+            this.lblValorConta.Location = new System.Drawing.Point(201, 191);
             this.lblValorConta.Name = "lblValorConta";
             this.lblValorConta.Size = new System.Drawing.Size(112, 20);
             this.lblValorConta.TabIndex = 1;
@@ -76,9 +79,9 @@ namespace lojaABC
             // txtValorConta
             // 
             this.txtValorConta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorConta.Location = new System.Drawing.Point(164, 227);
+            this.txtValorConta.Location = new System.Drawing.Point(205, 227);
             this.txtValorConta.Name = "txtValorConta";
-            this.txtValorConta.Size = new System.Drawing.Size(142, 26);
+            this.txtValorConta.Size = new System.Drawing.Size(108, 26);
             this.txtValorConta.TabIndex = 4;
             // 
             // lblAvaliacao
@@ -111,11 +114,11 @@ namespace lojaABC
             // 
             this.btnCalcularGorjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCalcularGorjeta.Image = ((System.Drawing.Image)(resources.GetObject("btnCalcularGorjeta.Image")));
-            this.btnCalcularGorjeta.Location = new System.Drawing.Point(13, 13);
+            this.btnCalcularGorjeta.Location = new System.Drawing.Point(8, 7);
             this.btnCalcularGorjeta.Name = "btnCalcularGorjeta";
             this.btnCalcularGorjeta.Size = new System.Drawing.Size(136, 76);
-            this.btnCalcularGorjeta.TabIndex = 8;
-            this.btnCalcularGorjeta.Text = "Calcular Gorjeta";
+            this.btnCalcularGorjeta.TabIndex = 9;
+            this.btnCalcularGorjeta.Text = "Calcular gorjeta";
             this.btnCalcularGorjeta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCalcularGorjeta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCalcularGorjeta.UseVisualStyleBackColor = true;
@@ -125,16 +128,16 @@ namespace lojaABC
             // 
             this.txtValorGorjeta.Enabled = false;
             this.txtValorGorjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorGorjeta.Location = new System.Drawing.Point(377, 227);
+            this.txtValorGorjeta.Location = new System.Drawing.Point(348, 227);
             this.txtValorGorjeta.Name = "txtValorGorjeta";
-            this.txtValorGorjeta.Size = new System.Drawing.Size(142, 26);
+            this.txtValorGorjeta.Size = new System.Drawing.Size(117, 26);
             this.txtValorGorjeta.TabIndex = 5;
             // 
             // lblValorGorjeta
             // 
             this.lblValorGorjeta.AutoSize = true;
             this.lblValorGorjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorGorjeta.Location = new System.Drawing.Point(373, 191);
+            this.lblValorGorjeta.Location = new System.Drawing.Point(344, 191);
             this.lblValorGorjeta.Name = "lblValorGorjeta";
             this.lblValorGorjeta.Size = new System.Drawing.Size(121, 20);
             this.lblValorGorjeta.TabIndex = 6;
@@ -168,7 +171,7 @@ namespace lojaABC
             this.txtValorTotal.Location = new System.Drawing.Point(44, 338);
             this.txtValorTotal.Name = "txtValorTotal";
             this.txtValorTotal.Size = new System.Drawing.Size(142, 26);
-            this.txtValorTotal.TabIndex = 6;
+            this.txtValorTotal.TabIndex = 7;
             // 
             // lblValorTotal
             // 
@@ -184,10 +187,10 @@ namespace lojaABC
             // 
             this.btnConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmar.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirmar.Image")));
-            this.btnConfirmar.Location = new System.Drawing.Point(171, 13);
+            this.btnConfirmar.Location = new System.Drawing.Point(150, 7);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(133, 76);
-            this.btnConfirmar.TabIndex = 9;
+            this.btnConfirmar.TabIndex = 10;
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConfirmar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -209,9 +212,9 @@ namespace lojaABC
             this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigo.Location = new System.Drawing.Point(40, 94);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(129, 20);
+            this.lblCodigo.Size = new System.Drawing.Size(124, 20);
             this.lblCodigo.TabIndex = 13;
-            this.lblCodigo.Text = "Cod. Funcionario";
+            this.lblCodigo.Text = "Cod. funcionário";
             // 
             // lblCodigoConta
             // 
@@ -219,9 +222,9 @@ namespace lojaABC
             this.lblCodigoConta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigoConta.Location = new System.Drawing.Point(38, 191);
             this.lblCodigoConta.Name = "lblCodigoConta";
-            this.lblCodigoConta.Size = new System.Drawing.Size(89, 20);
+            this.lblCodigoConta.Size = new System.Drawing.Size(86, 20);
             this.lblCodigoConta.TabIndex = 15;
-            this.lblCodigoConta.Text = "Cod. Conta";
+            this.lblCodigoConta.Text = "Cod. conta";
             // 
             // txtCodigoConta
             // 
@@ -235,23 +238,38 @@ namespace lojaABC
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.btnPesquisar);
             this.panel1.Controls.Add(this.btnLimpar);
             this.panel1.Controls.Add(this.btnSair);
             this.panel1.Controls.Add(this.btnCalcularGorjeta);
             this.panel1.Controls.Add(this.btnConfirmar);
-            this.panel1.Location = new System.Drawing.Point(34, 386);
+            this.panel1.Location = new System.Drawing.Point(238, 312);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(632, 97);
-            this.panel1.TabIndex = 7;
+            this.panel1.Size = new System.Drawing.Size(431, 171);
+            this.panel1.TabIndex = 8;
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisar.Image = ((System.Drawing.Image)(resources.GetObject("btnPesquisar.Image")));
+            this.btnPesquisar.Location = new System.Drawing.Point(69, 89);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(136, 76);
+            this.btnPesquisar.TabIndex = 12;
+            this.btnPesquisar.Text = "Pesquisar conta";
+            this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // btnLimpar
             // 
             this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpar.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpar.Image")));
-            this.btnLimpar.Location = new System.Drawing.Point(324, 13);
+            this.btnLimpar.Location = new System.Drawing.Point(289, 7);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(136, 76);
-            this.btnLimpar.TabIndex = 10;
+            this.btnLimpar.TabIndex = 11;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnLimpar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -262,15 +280,34 @@ namespace lojaABC
             // 
             this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.Image = ((System.Drawing.Image)(resources.GetObject("btnSair.Image")));
-            this.btnSair.Location = new System.Drawing.Point(482, 13);
+            this.btnSair.Location = new System.Drawing.Point(243, 89);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(133, 76);
-            this.btnSair.TabIndex = 11;
-            this.btnSair.Text = "Sair";
+            this.btnSair.TabIndex = 13;
+            this.btnSair.Text = "Voltar";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSair.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // lblData
+            // 
+            this.lblData.AutoSize = true;
+            this.lblData.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblData.Location = new System.Drawing.Point(523, 191);
+            this.lblData.Name = "lblData";
+            this.lblData.Size = new System.Drawing.Size(44, 20);
+            this.lblData.TabIndex = 16;
+            this.lblData.Text = "Data";
+            // 
+            // dtpData
+            // 
+            this.dtpData.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpData.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpData.Location = new System.Drawing.Point(510, 229);
+            this.dtpData.Name = "dtpData";
+            this.dtpData.Size = new System.Drawing.Size(96, 20);
+            this.dtpData.TabIndex = 6;
             // 
             // frmCalcularGorjeta
             // 
@@ -278,6 +315,8 @@ namespace lojaABC
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(692, 487);
+            this.Controls.Add(this.dtpData);
+            this.Controls.Add(this.lblData);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblCodigoConta);
             this.Controls.Add(this.txtCodigoConta);
@@ -296,6 +335,7 @@ namespace lojaABC
             this.Controls.Add(this.lblTitulo);
             this.MaximizeBox = false;
             this.Name = "frmCalcularGorjeta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCalcularGorjeta";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -325,5 +365,8 @@ namespace lojaABC
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.Button btnPesquisar;
+        private System.Windows.Forms.Label lblData;
+        private System.Windows.Forms.DateTimePicker dtpData;
     }
 }
