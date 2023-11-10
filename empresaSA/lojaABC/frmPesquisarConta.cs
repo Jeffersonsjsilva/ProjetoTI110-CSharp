@@ -92,12 +92,11 @@ namespace lojaABC
         }
         public void carregarGorjeta(int codigo)
         {
-
             Decimal total = 0;
 
             MySqlCommand comm = new MySqlCommand();
 
-            comm.CommandText = "select valorGorjeta, avaliacao, data from tbconta where codFunc = @codFunc and data between @dataInicio and @dataFinal;";
+            comm.CommandText = "select valorGorjeta, avaliacao, data from tbconta where codFunc = @codFunc and DATE(data) between @dataInicio and @dataFinal;";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
@@ -110,10 +109,14 @@ namespace lojaABC
             MySqlDataReader DR;
             DR = comm.ExecuteReader();
             lbbContas.Items.Clear();
+            
 
             while (DR.Read())
             {
-                lbbContas.Items.Add("R$ " + DR.GetString(0) + " - " + DR.GetString(1) +" - " + DR.GetString(2));
+                string data = DR.GetString(2);
+                data = Convert.ToDateTime(data).ToShortDateString();
+
+                lbbContas.Items.Add("R$ " + DR.GetString(0) + " - " + DR.GetString(1) +" - " + data);
                 total = total + Convert.ToDecimal(DR.GetString(0));
             }
             txtTotal.Text = "R$ " + Convert.ToString(total);
